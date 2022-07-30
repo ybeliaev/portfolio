@@ -9,6 +9,7 @@
 + `npm install three` 
 + copy code from `https://github.com/mrdoob/three.js/`
 + add `type="module"` to `script`
++ `npm start` for `http://localhost:1234/`
 + have base code:
 
 ```js
@@ -58,7 +59,8 @@ export default class Sketch {
   addObjects() {
     this.geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
     this.material = new THREE.MeshNormalMaterial();
-
+    this.material = new THREE.MeshBasicMaterial({color: 0xffff00});
+    
     this.mesh = new THREE.Mesh(this.geometry, this.material);
     this.scene.add(this.mesh);
   }
@@ -77,7 +79,9 @@ export default class Sketch {
 new Sketch({
   domElement: document.getElementById("container"),
 });
-
-
-
 ```
++ https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene в разделе GEOMETRY имею разные фигуры
++ add `alpha: true` to `THREE.WebGLRenderer({ antialias: true, alpha: true });` for change background `background-color: #ccc;`
++ add `THREE.ShaderMaterial`
++ in dir `shaders` create files `vertex.glsl`, `fragment.glsl`
++ go to `EXAMPLES` and here move to right down `source`

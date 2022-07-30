@@ -13,7 +13,7 @@ export default class Sketch {
     this.camera.position.z = 1;
 
     this.scene = new THREE.Scene();
-    this.renderer = new THREE.WebGLRenderer({ antialias: true });
+    this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     this.renderer.setPixelRatio(window.devicePixelRatio);
     // this.renderer.setPixelRatio(2);
 
@@ -40,10 +40,23 @@ export default class Sketch {
   setupResize() {
     addEventListener("resize", this.resize.bind(this));
   }
-
+  // add geometry objects
   addObjects() {
     this.geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
+    this.geometry = new THREE.SphereGeometry(0.2, 10, 30);
     this.material = new THREE.MeshNormalMaterial();
+    this.material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
+    this.material = new THREE.MeshLambertMaterial(); // по дефолту даст чёрный цвет
+
+    material = new THREE.ShaderMaterial({
+      uniforms: {
+        time: { value: 1.0 },
+        resolution: { value: new THREE.Vector2() },
+      },
+      vertexShader: null,
+
+      fragmentShader: null,
+    });
 
     this.mesh = new THREE.Mesh(this.geometry, this.material);
     this.scene.add(this.mesh);

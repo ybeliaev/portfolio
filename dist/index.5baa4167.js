@@ -546,7 +546,8 @@ class Sketch {
         this.camera.position.z = 1;
         this.scene = new _three.Scene();
         this.renderer = new _three.WebGLRenderer({
-            antialias: true
+            antialias: true,
+            alpha: true
         });
         this.renderer.setPixelRatio(window.devicePixelRatio);
         // this.renderer.setPixelRatio(2);
@@ -569,9 +570,27 @@ class Sketch {
     setupResize() {
         addEventListener("resize", this.resize.bind(this));
     }
+    // add geometry objects
     addObjects() {
         this.geometry = new _three.BoxGeometry(0.2, 0.2, 0.2);
+        this.geometry = new _three.SphereGeometry(0.2, 10, 30);
         this.material = new _three.MeshNormalMaterial();
+        this.material = new _three.MeshBasicMaterial({
+            color: 0xffff00
+        });
+        this.material = new _three.MeshLambertMaterial(); // по дефолту даст чёрный цвет
+        material = new _three.ShaderMaterial({
+            uniforms: {
+                time: {
+                    value: 1.0
+                },
+                resolution: {
+                    value: new _three.Vector2()
+                }
+            },
+            vertexShader: null,
+            fragmentShader: null
+        });
         this.mesh = new _three.Mesh(this.geometry, this.material);
         this.scene.add(this.mesh);
     }
@@ -589,7 +608,7 @@ new Sketch({
     domElement: document.getElementById("container")
 });
 
-},{"three":"ktPTu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","three/examples/jsm/controls/OrbitControls":"7mqRv"}],"ktPTu":[function(require,module,exports) {
+},{"three":"ktPTu","three/examples/jsm/controls/OrbitControls":"7mqRv","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ktPTu":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "ACESFilmicToneMapping", ()=>ACESFilmicToneMapping);
