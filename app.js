@@ -50,7 +50,7 @@ export default class Sketch {
     //this.material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
     //this.material = new THREE.MeshLambertMaterial(); // по дефолту даст чёрный цвет
 
-    material = new THREE.ShaderMaterial({
+    this.material = new THREE.ShaderMaterial({
       uniforms: {
         time: { value: 1.0 },
         resolution: { value: new THREE.Vector2() },

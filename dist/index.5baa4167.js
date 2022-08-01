@@ -581,7 +581,7 @@ class Sketch {
         //this.material = new THREE.MeshNormalMaterial();
         //this.material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
         //this.material = new THREE.MeshLambertMaterial(); // по дефолту даст чёрный цвет
-        material = new _three.ShaderMaterial({
+        this.material = new _three.ShaderMaterial({
             uniforms: {
                 time: {
                     value: 1.0
@@ -29974,10 +29974,10 @@ class MapControls extends OrbitControls {
 }
 
 },{"three":"ktPTu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6yofB":[function(require,module,exports) {
-module.exports = "#define GLSLIFY 1\nvoid main(){\n    gl_FragColor = vec4(1.,0.,0.,1.)\n}";
+module.exports = "#define GLSLIFY 1\nvoid main(){\n     gl_FragColor = vec4(0.,0.,1., 1.);\n}";
 
 },{}],"fWka7":[function(require,module,exports) {
-module.exports = "#define GLSLIFY 1\nvoid main(){\n    gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );\n}";
+module.exports = "#define GLSLIFY 1\nvoid main(){\n    gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );\n}";
 
 },{}]},["euTuy","igcvL"], "igcvL", "parcelRequire4833")
 
