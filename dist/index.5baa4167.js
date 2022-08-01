@@ -578,11 +578,9 @@ class Sketch {
     addObjects() {
         //this.geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
         this.geometry = new _three.PlaneBufferGeometry(0.5, 0.5);
-        this.material = new _three.MeshNormalMaterial();
-        this.material = new _three.MeshBasicMaterial({
-            color: 0xffff00
-        });
-        this.material = new _three.MeshLambertMaterial(); // по дефолту даст чёрный цвет
+        //this.material = new THREE.MeshNormalMaterial();
+        //this.material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
+        //this.material = new THREE.MeshLambertMaterial(); // по дефолту даст чёрный цвет
         material = new _three.ShaderMaterial({
             uniforms: {
                 time: {

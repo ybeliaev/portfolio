@@ -46,9 +46,9 @@ export default class Sketch {
     //this.geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
     this.geometry = new THREE.PlaneBufferGeometry(0.5, 0.5);
 
-    this.material = new THREE.MeshNormalMaterial();
-    this.material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
-    this.material = new THREE.MeshLambertMaterial(); // по дефолту даст чёрный цвет
+    //this.material = new THREE.MeshNormalMaterial();
+    //this.material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
+    //this.material = new THREE.MeshLambertMaterial(); // по дефолту даст чёрный цвет
 
     material = new THREE.ShaderMaterial({
       uniforms: {
