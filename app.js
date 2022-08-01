@@ -2,7 +2,8 @@ console.log(new Date().toLocaleTimeString());
 
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-
+import fragment from "./shaders/fragment.glsl";
+import vertex from "./shaders/vertex.glsl";
 export default class Sketch {
   constructor(options) {
     this.container = options.domElement;
@@ -53,9 +54,9 @@ export default class Sketch {
         time: { value: 1.0 },
         resolution: { value: new THREE.Vector2() },
       },
-      vertexShader: null,
+      vertexShader: vertex,
 
-      fragmentShader: null,
+      fragmentShader: fragment,
     });
 
     this.mesh = new THREE.Mesh(this.geometry, this.material);

@@ -536,6 +536,10 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _three = require("three");
 var _orbitControls = require("three/examples/jsm/controls/OrbitControls");
+var _fragmentGlsl = require("./shaders/fragment.glsl");
+var _fragmentGlslDefault = parcelHelpers.interopDefault(_fragmentGlsl);
+var _vertexGlsl = require("./shaders/vertex.glsl");
+var _vertexGlslDefault = parcelHelpers.interopDefault(_vertexGlsl);
 console.log(new Date().toLocaleTimeString());
 class Sketch {
     constructor(options){
@@ -588,8 +592,8 @@ class Sketch {
                     value: new _three.Vector2()
                 }
             },
-            vertexShader: null,
-            fragmentShader: null
+            vertexShader: (0, _vertexGlslDefault.default),
+            fragmentShader: (0, _fragmentGlslDefault.default)
         });
         this.mesh = new _three.Mesh(this.geometry, this.material);
         this.scene.add(this.mesh);
@@ -608,7 +612,7 @@ new Sketch({
     domElement: document.getElementById("container")
 });
 
-},{"three":"ktPTu","three/examples/jsm/controls/OrbitControls":"7mqRv","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ktPTu":[function(require,module,exports) {
+},{"three":"ktPTu","three/examples/jsm/controls/OrbitControls":"7mqRv","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./shaders/fragment.glsl":"6yofB","./shaders/vertex.glsl":"fWka7"}],"ktPTu":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "ACESFilmicToneMapping", ()=>ACESFilmicToneMapping);
@@ -29971,6 +29975,12 @@ class MapControls extends OrbitControls {
     }
 }
 
-},{"three":"ktPTu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["euTuy","igcvL"], "igcvL", "parcelRequire4833")
+},{"three":"ktPTu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6yofB":[function(require,module,exports) {
+module.exports = "#define GLSLIFY 1\nvoid main(){\n    gl_FragColor = vec4(1.,0.,0.,1.)\n}";
+
+},{}],"fWka7":[function(require,module,exports) {
+module.exports = "#define GLSLIFY 1\nvoid main(){\n    gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );\n}";
+
+},{}]},["euTuy","igcvL"], "igcvL", "parcelRequire4833")
 
 //# sourceMappingURL=index.5baa4167.js.map
