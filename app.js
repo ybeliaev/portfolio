@@ -43,8 +43,9 @@ export default class Sketch {
   }
   // add geometry objects
   addObjects() {
-    this.geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
-    this.geometry = new THREE.SphereGeometry(0.2, 10, 30);
+    //this.geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
+    this.geometry = new THREE.PlaneBufferGeometry(0.5, 0.5);
+
     this.material = new THREE.MeshNormalMaterial();
     this.material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
     this.material = new THREE.MeshLambertMaterial(); // по дефолту даст чёрный цвет

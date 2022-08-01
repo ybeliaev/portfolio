@@ -576,8 +576,8 @@ class Sketch {
     }
     // add geometry objects
     addObjects() {
-        this.geometry = new _three.BoxGeometry(0.2, 0.2, 0.2);
-        this.geometry = new _three.SphereGeometry(0.2, 10, 30);
+        //this.geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
+        this.geometry = new _three.PlaneBufferGeometry(0.5, 0.5);
         this.material = new _three.MeshNormalMaterial();
         this.material = new _three.MeshBasicMaterial({
             color: 0xffff00
