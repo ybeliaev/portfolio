@@ -1,2 +1,5 @@
 .idea
 /node_modules
+/.parsel-cashe
+.parcel-cache/data.mdb
+.parcel-cache/lock.mdb
