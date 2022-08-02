@@ -577,11 +577,10 @@ class Sketch {
     // add geometry objects
     addObjects() {
         //this.geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
-        this.geometry = new _three.PlaneBufferGeometry(0.5, 0.5);
-        //this.material = new THREE.MeshNormalMaterial();
-        //this.material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
-        //this.material = new THREE.MeshLambertMaterial(); // по дефолту даст чёрный цвет
+        this.geometry = new _three.PlaneBufferGeometry(0.5, 0.5, 100, 100);
+        console.log(this.geometry); // have attribute POSITION
         this.material = new _three.ShaderMaterial({
+            wireframe: true,
             uniforms: {
                 time: {
                     value: 1.0
@@ -597,8 +596,8 @@ class Sketch {
         this.scene.add(this.mesh);
     }
     render() {
-        this.time += 0.5;
-        console.log(this.time);
+        this.time += 0.05; // будет влиять на частоту изменений фигуры
+        this.material.uniforms.time.value = this.time;
         this.mesh.rotation.x = this.time / 2000;
         this.mesh.rotation.y = this.time / 1000;
         this.renderer.render(this.scene, this.camera);
@@ -29974,10 +29973,10 @@ class MapControls extends OrbitControls {
 }
 
 },{"three":"ktPTu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6yofB":[function(require,module,exports) {
-module.exports = "#define GLSLIFY 1\nvoid main(){\n     gl_FragColor = vec4(0.,0.,1., 1.);\n}";
+module.exports = "#define GLSLIFY 1\nvarying float pulse;\n\nvoid main(){\n     gl_FragColor = vec4(1.,pulse,0., 1.); // color\n}";
 
 },{}],"fWka7":[function(require,module,exports) {
-module.exports = "#define GLSLIFY 1\nvoid main(){\n    gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );\n}";
+module.exports = "#define GLSLIFY 1\nuniform float time;\nvarying float pulse;\n\nvoid main(){\n    vec3 newPosition = position;\n    newPosition.z = 0.05*sin(length(position)*30. + time);\n    pulse = newPosition.z;\n    gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );\n}";
 
 },{}]},["euTuy","igcvL"], "igcvL", "parcelRequire4833")
 

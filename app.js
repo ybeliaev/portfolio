@@ -44,19 +44,16 @@ export default class Sketch {
   // add geometry objects
   addObjects() {
     //this.geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
-    this.geometry = new THREE.PlaneBufferGeometry(0.5, 0.5);
-
-    //this.material = new THREE.MeshNormalMaterial();
-    //this.material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
-    //this.material = new THREE.MeshLambertMaterial(); // по дефолту даст чёрный цвет
+    this.geometry = new THREE.PlaneBufferGeometry(0.5, 0.5, 100, 100);
+    console.log(this.geometry); // have attribute POSITION
 
     this.material = new THREE.ShaderMaterial({
+      wireframe: true, // для показа структуры фигуры
       uniforms: {
         time: { value: 1.0 },
         resolution: { value: new THREE.Vector2() },
       },
       vertexShader: vertex,
-
       fragmentShader: fragment,
     });
 
@@ -65,8 +62,8 @@ export default class Sketch {
   }
 
   render() {
-    this.time += 0.5;
-    console.log(this.time);
+    this.time += 0.05; // будет влиять на частоту изменений фигуры
+    this.material.uniforms.time.value = this.time;
 
     this.mesh.rotation.x = this.time / 2000;
     this.mesh.rotation.y = this.time / 1000;
