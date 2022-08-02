@@ -4,6 +4,6 @@ varying float pulse;
 void main(){
     vec3 newPosition = position;
     newPosition.z = 0.05*sin(length(position)*30. + time);
-    pulse = newPosition.z;
+    pulse = 20.0*newPosition.z;
     gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );
 }

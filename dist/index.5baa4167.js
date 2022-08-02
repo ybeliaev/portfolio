@@ -29976,7 +29976,7 @@ class MapControls extends OrbitControls {
 module.exports = "#define GLSLIFY 1\nvarying float pulse;\n\nvoid main(){\n     gl_FragColor = vec4(1.,pulse,0., 1.); // color\n}";
 
 },{}],"fWka7":[function(require,module,exports) {
-module.exports = "#define GLSLIFY 1\nuniform float time;\nvarying float pulse;\n\nvoid main(){\n    vec3 newPosition = position;\n    newPosition.z = 0.05*sin(length(position)*30. + time);\n    pulse = newPosition.z;\n    gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );\n}";
+module.exports = "#define GLSLIFY 1\nuniform float time;\nvarying float pulse;\n\nvoid main(){\n    vec3 newPosition = position;\n    newPosition.z = 0.05*sin(length(position)*30. + time);\n    pulse = 20.0*newPosition.z;\n    gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );\n}";
 
 },{}]},["euTuy","igcvL"], "igcvL", "parcelRequire4833")
 
